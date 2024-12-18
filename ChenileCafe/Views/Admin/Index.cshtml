@@ -1,0 +1,45 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<h2 class="text-center mb-5">Danh sách nhân sự</h2>
+<div class="row mb-5">
+	<div class="col">
+		<a class="btn btn-primary" asp-controller="Admin" asp-action="Create">Thêm nhân sự</a>
+	</div>
+	<div class="col">
+	</div>
+</div>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Họ và tên</th>
+			<th>Số điện thoại</th>
+			<th>Ngày sinh</th>
+			<th>Email</th>
+			<th>Vai trò</th>
+			<th>Thao tác</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var users in Model)
+		{
+			<tr>
+				<td>@users.Id</td>
+				<td>@users.Name</td>
+				<td>+84 @users.PhoneNumber</td>
+				<td>@(users.Birth?.ToString("dd/MM/yyyy") ?? "-")</td>
+				<td>@users.Email</td>
+				<td>@users.Roles</td>
+				<td style="white-space: nowrap;">
+					<a class="btn btn-info" asp-controller="userss" asp-action="Edit"
+					   asp-route-id="@users.Id">Sửa</a>
+					<a class="btn btn-danger" asp-controller="userss" asp-action="Delete"
+					   asp-route-id="@users.Id">Xóa</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

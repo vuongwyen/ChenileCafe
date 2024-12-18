@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height:100vh">
+        <div class="col-4">
+            <h2 class="text-center">Đăng nhập</h2>
+            <div class="card border-white">
+                <div class="card-body">
+                    <form method="post" asp-controller="Account" asp-action="Login">
+                        <div class="form-group mb-3">
+                            <label for="Emaill">Địa chỉ email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="exampleInputPassword1">Mật khẩu</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-5">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@if (ViewBag.Error != null)
+{
+    <p style="color: red;">@ViewBag.Error</p>
+}
